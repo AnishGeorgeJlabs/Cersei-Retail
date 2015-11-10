@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='app')
   head
     meta(charset='utf-8')
     meta(name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width")
@@ -13,4 +13,15 @@ html
       script(src='lib/'+file+'.js')
 
     script(src='cordova.js')
+    - var coreJs = ['app', 'config']
+    each file in coreJs
+      script(src='js/'+file+'.min.js')
+  body(animation="slide-left-right-ios7")
+    ion-nav-bar.bar-dark
+      //
+        ion-nav-buttons
+          button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
+      // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
+      ion-nav-back-button
+    ion-nav-view
 

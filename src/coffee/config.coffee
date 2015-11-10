@@ -14,4 +14,17 @@ angular.module 'app'
         url: '/login'
         templateUrl: 'templates/login.html'
       )
+      .state('tabs.orders',
+        url: '/orders'
+        views:
+          order_tab:
+            templateUrl: 'templates/orders.html'
+      )
+      .state('tabs.account',
+        url: '/account'
+        views:
+          account_tab:
+            templateUrl: 'templates/account.html'
+      )
+      $urlRouterProvider.otherwise('/login')
   ])
