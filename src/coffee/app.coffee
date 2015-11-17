@@ -1,4 +1,4 @@
-angular.module 'app', ['ionic', 'ngCordova']
+angular.module 'app', ['ionic', 'ngCordova', 'app.controllers']
 .run([
     '$ionicPlatform', '$ionicPopup', '$state',
 
@@ -33,3 +33,5 @@ angular.module 'app', ['ionic', 'ngCordova']
           $ionicHistory.goBack()
       , 100)
   ])
+
+angular.module('app.controllers', [])  # just a declaration, the rest will be filled in from the other files
