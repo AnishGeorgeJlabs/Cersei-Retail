@@ -5,8 +5,7 @@
 node_modules/
 platforms/
 plugins/
-www/templates_desk
-www/templates_phone
+www/templates
 www/css
 www/js
 www/lib

@@ -1,0 +1,7 @@
+ion-side-menu ion-content {
+  background: $dark;
+  .list .item {
+    background: inherit;
+    color: $light;
+  }
+}
