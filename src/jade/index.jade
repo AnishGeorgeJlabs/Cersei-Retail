@@ -30,11 +30,14 @@ html(ng-app='app')
             .item.item-icon-left(ui-sref='changePass' menu-close)
               i.icon.ion-gear-a
               | Change Password
+            .item.item-icon-left(ui-sref='changePass' menu-close)
+              i.icon.ion-arrow-graph-up-right
+              | Account Stats
             .item.item-icon-left(ng-click='toggle_mute()')
               i.icon(ng-class="is_mute()?'ion-android-volume-mute': 'ion-android-volume-up'")
-              | alert volume
+              | Alert
       ion-side-menu-content(drag-content="false")
-        ion-nav-bar.bar-dark
+        ion-nav-bar.bar-dark(ng-controller='NavCtrl')
           ion-nav-buttons
             button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
           // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
