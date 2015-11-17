@@ -9,10 +9,11 @@ var sh = require('shelljs');
 var coffee = require('gulp-coffee');
 var jade = require('gulp-jade');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 
 var paths = {
   sass: ['./src/scss/**/*.scss'],
-  coffee: ['./src/coffee/**/*.coffee'],
+  coffee: ['./src/coffee/app.coffee', './src/coffee/**/*.coffee'],
   jade: ['./src/jade/**/*.jade']
 };
 
@@ -35,6 +36,7 @@ gulp.task('coffee', function(done) {
   gulp.src(paths.coffee)
     .pipe(coffee().on('error', gutil.log))
     .pipe(gulp.dest('./www/js/'))
+    .pipe(concat('application.js'))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js'}))
     .pipe(gulp.dest('./www/js/'))
