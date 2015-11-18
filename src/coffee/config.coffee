@@ -15,6 +15,7 @@ angular.module 'app'
       .state('changePass',
         url: '/change_pass'
         templateUrl: 'templates/changePass.html'
+        controller: 'ChangePassCtrl'
       )
       .state('orders',
         url: '/orders'
