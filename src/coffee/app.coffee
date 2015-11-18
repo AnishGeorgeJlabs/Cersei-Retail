@@ -1,4 +1,4 @@
-angular.module 'app', ['ionic', 'ngCordova', 'app.controllers']
+angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services']
 .run([
     '$ionicPlatform', '$ionicPopup', '$state',
 
@@ -35,4 +35,5 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers']
   ])
 
 # Declarations for all the modules here, so that concatenation and minification can go smoothly
+angular.module('app.services', [])
 angular.module('app.controllers', [])

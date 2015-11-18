@@ -1,0 +1,25 @@
+angular.module 'app.services'
+.factory('csAudioAlert', ['$cordovaMedia', '$ionicPlatform', '$rootScope', ($cordovaMedia, $ionicPlatform, $rootScope) ->
+    audio = null
+    mute = false
+    $ionicPlatform.ready(() ->
+      audio = $cordovaMedia.newMedia(window.cordova.file.applicationDirectory + "www/sound/ringer.mp3")
+    )
+    $rootScope.$on("app:log_out", () ->
+      audio.stop()
+    )
+
+    return {
+      play: () ->
+        audio.stop()
+        audio.play()
+      stop: () -> audio.stop()
+      toggle_mute: () ->
+        if mute
+          audio.setVolume(1.0)
+        else
+          audio.setVolume(0.0)
+        mute = not mute
+      is_mute: () -> mute
+    }
+  ])
