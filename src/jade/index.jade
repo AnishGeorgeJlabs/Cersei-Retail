@@ -12,6 +12,8 @@ html(ng-app='app')
     each file in jsFiles
       script(src='lib/'+file+'.js')
 
+    script(src='custom_lib/md5.js')
+
     script(src='cordova.js')
     script(src='js/application.min.js')
 
@@ -38,8 +40,8 @@ html(ng-app='app')
       ion-side-menu-content(drag-content="false")
         ion-nav-bar.bar-dark(ng-controller='NavCtrl')
           ion-nav-buttons
-            button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
+            button(menu-toggle='left' ng-hide='menuDisabled()').button.button-icon.icon.ion-navicon
           // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
-          ion-nav-back-button
+          ion-nav-back-button(ng-hide='backDisabled()')
         ion-nav-view
 

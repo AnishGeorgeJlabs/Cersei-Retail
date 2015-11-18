@@ -10,6 +10,7 @@ angular.module 'app'
       .state('login',
         url: '/login'
         templateUrl: 'templates/login.html'
+        controller: 'LoginCtrl'
       )
       .state('changePass',
         url: '/change_pass'
