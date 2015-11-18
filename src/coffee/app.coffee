@@ -34,4 +34,5 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers']
       , 100)
   ])
 
-angular.module('app.controllers', [])  # just a declaration, the rest will be filled in from the other files
+# Declarations for all the modules here, so that concatenation and minification can go smoothly
+angular.module('app.controllers', [])
