@@ -40,8 +40,7 @@ html(ng-app='app')
       ion-side-menu-content(drag-content="false")
         ion-nav-bar.bar-dark(ng-controller='NavCtrl')
           ion-nav-buttons
-            button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
-          // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
-          ion-nav-back-button(ng-if='!stateCheck("orders")')
+            button(menu-toggle='left' ng-if='stateCheck("orders")').button.button-icon.icon.ion-navicon
+            button(ng-click='goBack()' ng-if='!stateCheck("orders")').button.button-icon.icon.ion-android-arrow-back
         ion-nav-view
 

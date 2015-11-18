@@ -1,4 +1,4 @@
-angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services']
+angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 'app.config']
 .run([
     '$ionicPlatform', '$ionicPopup', '$state'
 

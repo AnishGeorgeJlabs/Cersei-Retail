@@ -1,4 +1,4 @@
-angular.module 'app'
+angular.module 'app.config', ['app.controllers', 'app.services']
 .config([
     '$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'csApiEndpointsProvider',
 
@@ -20,10 +20,12 @@ angular.module 'app'
       .state('orders',
         url: '/orders'
         templateUrl: 'templates/orders.html'
+        controller: 'OrdersCtrl'
       )
       .state('account',
         url: '/account'
         templateUrl: 'templates/account.html'
+        controller: 'AccountCtrl'
       )
       $urlRouterProvider.otherwise('/login')
   ])
