@@ -13,15 +13,32 @@ html(ng-app='app')
       script(src='lib/'+file+'.js')
 
     script(src='cordova.js')
-    - var coreJs = ['app', 'config']
-    each file in coreJs
-      script(src='js/'+file+'.min.js')
+    script(src='js/application.min.js')
   body(animation="slide-left-right-ios7")
-    ion-nav-bar.bar-dark
-      //
-        ion-nav-buttons
-          button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
-      // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
-      ion-nav-back-button
-    ion-nav-view
+    ion-side-menus
+      ion-side-menu(side='left')
+        header.bar.bar-dark.bar-header.dark-border
+          h1.title {{ merchant_name }}
+        ion-content.has-header
+          .list.list-borderless
+            #sidebarSpacer.item.spacer
+            .item.item-icon-left(menu-close)
+              i.icon.ion-log-out
+              | Logout
+            .item.item-icon-left(ui-sref='changePass' menu-close)
+              i.icon.ion-gear-a
+              | Change Password
+            .item.item-icon-left(ui-sref='changePass' menu-close)
+              i.icon.ion-arrow-graph-up-right
+              | Account Stats
+            .item.item-icon-left(ng-click='toggle_mute()')
+              i.icon(ng-class="is_mute()?'ion-android-volume-mute': 'ion-android-volume-up'")
+              | Alert
+      ion-side-menu-content(drag-content="false")
+        ion-nav-bar.bar-dark(ng-controller='NavCtrl')
+          ion-nav-buttons
+            button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
+          // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
+          ion-nav-back-button
+        ion-nav-view
 

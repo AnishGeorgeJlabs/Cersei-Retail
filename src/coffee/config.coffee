@@ -5,26 +5,21 @@ angular.module 'app'
     ($stateProvider, $urlRouterProvider, $ionicConfigProvider) ->
 
       $stateProvider
-      .state('tabs',
-        url: '/tab'
-        abstract: true
-        templateUrl: 'templates/tabs.html'
-      )
       .state('login',
         url: '/login'
         templateUrl: 'templates/login.html'
       )
-      .state('tabs.orders',
-        url: '/orders'
-        views:
-          order_tab:
-            templateUrl: 'templates/orders.html'
+      .state('changePass',
+        url: '/change_pass'
+        templateUrl: 'templates/changePass.html'
       )
-      .state('tabs.account',
+      .state('orders',
+        url: '/orders'
+        templateUrl: 'templates/orders.html'
+      )
+      .state('account',
         url: '/account'
-        views:
-          account_tab:
-            templateUrl: 'templates/account.html'
+        templateUrl: 'templates/account.html'
       )
       $urlRouterProvider.otherwise('/login')
   ])
