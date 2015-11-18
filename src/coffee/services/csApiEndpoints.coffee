@@ -18,7 +18,7 @@ angular.module 'app.services'
   $get: () ->
     return {
     echo: host
-    login: host + "login"
-    change_pass: host + "change_pass"
+    login: host + "auth/login"
+    change_pass: host + "auth/change_pass"
     }
 )
