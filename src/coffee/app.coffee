@@ -14,7 +14,7 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 
 
       # ----- Hardware back button handling ----------------------- #
       $ionicPlatform.registerBackButtonAction(() ->
-        if $state.is('orders')
+        if $state.is('orders') or $state.is("login")
           $ionicPopup.confirm(
             title: "exit application?"
             content: "Are you sure you want to exit the application?"
@@ -27,7 +27,7 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 
               if res
                 navigator.app.exitApp()
           )
-        else if $state.is("account")
+        else if $state.is("account") or $state.is("changePass")
           $state.go("orders")
         else
           $ionicHistory.goBack()

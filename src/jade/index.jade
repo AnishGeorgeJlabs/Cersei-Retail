@@ -25,7 +25,7 @@ html(ng-app='app')
         ion-content.has-header
           .list.list-borderless
             #sidebarSpacer.item.spacer
-            .item.item-icon-left(menu-close)
+            .item.item-icon-left(menu-close ng-click='logout()')
               i.icon.ion-log-out
               | Logout
             .item.item-icon-left(ui-sref='changePass' menu-close)
