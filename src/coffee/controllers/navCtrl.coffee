@@ -3,5 +3,12 @@ angular.module 'app.controllers'
     $scope.stateCheck = (name) ->
       $state.is(name)
 
-    $scope.goBack = () -> $ionicHistory.goBack()
+    $scope.goBack = () ->
+      if $state.is("account")
+        $state.go("orders")
+      else
+        $ionicHistory.goBack()
+
+    $scope.backEnabled = () ->
+      not ($state.is("login") or $state.is("orders"))
   ])

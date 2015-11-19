@@ -41,6 +41,6 @@ html(ng-app='app')
         ion-nav-bar.bar-dark(ng-controller='NavCtrl')
           ion-nav-buttons
             button(menu-toggle='left' ng-if='stateCheck("orders")').button.button-icon.icon.ion-navicon
-            button(ng-click='goBack()' ng-if='!stateCheck("orders")').button.button-icon.icon.ion-android-arrow-back
+            button(ng-click='goBack()' ng-if='backEnabled()').button.button-icon.icon.ion-android-arrow-back
         ion-nav-view
 

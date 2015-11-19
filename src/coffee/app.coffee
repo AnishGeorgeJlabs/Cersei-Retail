@@ -27,6 +27,8 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 
               if res
                 navigator.app.exitApp()
           )
+        else if $state.is("account")
+          $state.go("orders")
         else
           $ionicHistory.goBack()
       , 100)
