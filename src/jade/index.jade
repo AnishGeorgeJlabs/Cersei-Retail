@@ -12,24 +12,26 @@ html(ng-app='app')
     each file in jsFiles
       script(src='lib/'+file+'.js')
 
+    script(src='custom_lib/md5.js')
+
     script(src='cordova.js')
     script(src='js/application.min.js')
 
   body(animation="slide-left-right-ios7")
     ion-side-menus
-      ion-side-menu(side='left')
+      ion-side-menu(side='left' ng-controller='SidebarCtrl')
         header.bar.bar-dark.bar-header.dark-border
           h1.title {{ merchant_name }}
         ion-content.has-header
           .list.list-borderless
             #sidebarSpacer.item.spacer
-            .item.item-icon-left(menu-close)
+            .item.item-icon-left(menu-close ng-click='logout()')
               i.icon.ion-log-out
               | Logout
             .item.item-icon-left(ui-sref='changePass' menu-close)
               i.icon.ion-gear-a
               | Change Password
-            .item.item-icon-left(ui-sref='changePass' menu-close)
+            .item.item-icon-left(ui-sref='account' menu-close)
               i.icon.ion-arrow-graph-up-right
               | Account Stats
             .item.item-icon-left(ng-click='toggle_mute()')
@@ -38,8 +40,7 @@ html(ng-app='app')
       ion-side-menu-content(drag-content="false")
         ion-nav-bar.bar-dark(ng-controller='NavCtrl')
           ion-nav-buttons
-            button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
-          // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
-          ion-nav-back-button
+            button(menu-toggle='left' ng-if='stateCheck("orders")').button.button-icon.icon.ion-navicon
+            button(ng-click='goBack()' ng-if='backEnabled()').button.button-icon.icon.ion-android-arrow-back
         ion-nav-view
 

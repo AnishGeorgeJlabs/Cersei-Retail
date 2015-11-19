@@ -5,3 +5,11 @@ ion-side-menu ion-content {
     color: $light;
   }
 }
+
+#loginPageSpacer {
+  height: 40px
+}
+
+ion-content {
+  background: url("../img/scribble_light.png") repeat;
+}

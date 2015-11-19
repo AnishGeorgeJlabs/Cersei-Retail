@@ -20,11 +20,11 @@ angular.module('app.controllers')
             csUserCreds.change_pass($scope.data.username, $scope.data.old_pass, $scope.data.new_pass)
             .then((result) ->
               if result
+                $state.go('orders')
                 $cordovaToast.showShortBottom("The password was changed successfully")
-                $state.go 'orders'
               else
-                $cordovaToast.showLongBottom("Authentication error")
                 $state.go("login")
+                $cordovaToast.showLongBottom("Authentication error")
             )
         else
           $cordovaToast.showShortBottom("The passwords do not match")

@@ -1,5 +1,15 @@
 angular.module 'app.controllers'
-.controller('NavCtrl', ['$scope', 'csAudioAlert', ($scope, csAudioAlert) ->
-    $scope.is_mute = csAudioAlert.is_mute
-    $scope.toggle_mute = csAudioAlert.toggle_mute
+.controller('NavCtrl', ['$scope', 'csAudioAlert', '$state', '$ionicHistory', ($scope, csAudioAlert, $state, $ionicHistory) ->
+    $scope.stateCheck = (name) ->
+      $state.is(name)
+
+    $scope.goBack = () ->
+      if $state.is("account") or $state.is("changePass")
+        $state.go("orders")
+      else
+        $ionicHistory.goBack()
+
+    $scope.backEnabled = () ->
+      not ($state.is("login") or $state.is("orders"))
+
   ])

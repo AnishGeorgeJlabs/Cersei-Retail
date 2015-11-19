@@ -1,6 +1,6 @@
 angular.module('app.controllers')
-.controller('LoginCtrl', [ '$scope', '$state', 'csUserCreds', '$cordovaToast',
-    ($scope, $state, csUserCreds, $cordovaToast) ->
+.controller('LoginCtrl', [ '$scope', '$state', 'csUserCreds', '$cordovaToast', '$ionicHistory',
+    ($scope, $state, csUserCreds, $cordovaToast, $ionicHistory) ->
       $scope.data =
         username: ''
         password: ''

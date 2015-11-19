@@ -1,6 +1,6 @@
-angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services']
+angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 'app.config']
 .run([
-    '$ionicPlatform', '$ionicPopup', '$state',
+    '$ionicPlatform', '$ionicPopup', '$state'
 
     ($ionicPlatform, $ionicPopup, $state) ->
       # ----- Basic keyboard setup and all ------------------------ #
@@ -14,7 +14,7 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services']
 
       # ----- Hardware back button handling ----------------------- #
       $ionicPlatform.registerBackButtonAction(() ->
-        if $state.is('tabs.new') || $state.is('login')
+        if $state.is('orders') or $state.is("login")
           $ionicPopup.confirm(
             title: "exit application?"
             content: "Are you sure you want to exit the application?"
@@ -27,8 +27,8 @@ angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.services']
               if res
                 navigator.app.exitApp()
           )
-        else if $state.is('tabs.current') || $state.is('tabs.past')
-          $state.go 'tabs.new'
+        else if $state.is("account") or $state.is("changePass")
+          $state.go("orders")
         else
           $ionicHistory.goBack()
       , 100)
