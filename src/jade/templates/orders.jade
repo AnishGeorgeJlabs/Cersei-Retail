@@ -2,4 +2,23 @@ ion-view(title='Orders')
   ion-nav-buttons(side='right')
     button.button.button-icon.icon.ion-plus-round
   ion-content(padding='true').has-header
-    h3 blaho
+    ion-list
+      .calm(ng-if='orders.length == 0').wait-message
+        i.icon.ion-information-circled.text-large
+        br
+        | &nbspnothing to show
+      .card(ng-repeat='order in orders')
+        .item.item-divider {{:: order.order_id }}
+        .item.item-text-wrap.item-button-right
+          strong address: &nbsp
+          span.royal {{:: order.address }}
+          br
+          strong amount: &nbsp
+          span {{:: order.price }}
+          br
+          strong time: &nbsp
+          span {{:: order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
+          button.button.button-stable.button-clear.padding-top
+            span details &nbsp
+            i.icon.ion-arrow-right-b
+

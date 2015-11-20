@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 .controller('OrdersCtrl', ['$scope', 'csOrderOps', ($scope, csOrderOps) ->
-  $scope.order_list = []
+  $scope.orders = []
   csOrderOps.register_callback((data) ->
-    $scope.order_list = data
+    $scope.orders = data
   )
 ])
