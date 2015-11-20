@@ -12,7 +12,7 @@ angular.module 'app.services'
       logout: () ->
         username = ''
         agHttp.setApiCreds('', 0)
-        $rootScope.$emit("app:log_out")
+        $rootScope.$broadcast("app:logout")
       login: (user, password) ->
         pass = agEncPass(password)
 
@@ -23,7 +23,7 @@ angular.module 'app.services'
           username = user
           agHttp.setApiCreds(data.api_key, data.vendor_id)
           broad = {name: data.name, address: data.address}
-          $rootScope.$emit("app:logged_in", broad)
+          $rootScope.$broadcast("app:login", broad)
           username
         )
       change_pass: (user, old_pass, new_pass) ->

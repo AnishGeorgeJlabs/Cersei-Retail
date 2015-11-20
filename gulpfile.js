@@ -37,6 +37,7 @@ gulp.task('coffee', function(done) {
     .pipe(coffee().on('error', gutil.log))
     .pipe(gulp.dest('./www/js/'))
     .pipe(concat('application.js'))
+    .pipe(gulp.dest('./www/js/'))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js'}))
     .pipe(gulp.dest('./www/js/'))

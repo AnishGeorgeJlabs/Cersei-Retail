@@ -8,4 +8,10 @@ angular.module('app.controllers')
         csUserCreds.logout()
         $state.go 'login'
         $cordovaToast.showShortBottom("You have been successfully loggout out")
+
+      $scope.$on("app:login", (evt, broad) ->
+        console.log "app login on scope"
+        $scope.merchant_name = broad.name
+        $scope.address = broad.address
+      )
   ])
