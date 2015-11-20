@@ -1,6 +1,6 @@
 angular.module('app.controllers')
-.controller('SidebarCtrl', ['$scope', 'csAudioAlert', 'csUserCreds', '$cordovaToast', '$state',
-    ($scope, csAudioAlert, csUserCreds, $cordovaToast, $state) ->
+.controller('SidebarCtrl', ['$scope', 'csAudioAlert', 'csUserCreds', '$cordovaToast', '$state', '$rootScope',
+    ($scope, csAudioAlert, csUserCreds, $cordovaToast, $state, $rootScope) ->
       $scope.is_mute = csAudioAlert.is_mute
       $scope.toggle_mute = csAudioAlert.toggle_mute
 
@@ -9,8 +9,7 @@ angular.module('app.controllers')
         $state.go 'login'
         $cordovaToast.showShortBottom("You have been successfully loggout out")
 
-      $scope.$on("app:login", (evt, broad) ->
-        console.log "app login on scope"
+      $rootScope.$on("app:login", (evt, broad) ->
         $scope.merchant_name = broad.name
         $scope.address = broad.address
       )
