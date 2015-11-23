@@ -1,6 +1,6 @@
 ion-view(title='Orders')
   ion-nav-buttons(side='right')
-    button.button.button-icon.icon.ion-plus-round
+    button.button.button-icon.icon.ion-plus-round(ui-sref='newOrder')
   ion-content(padding='true').has-header
     ion-list
       .calm(ng-if='orders.length == 0').wait-message

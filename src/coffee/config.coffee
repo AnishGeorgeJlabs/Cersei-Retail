@@ -30,7 +30,12 @@ angular.module 'app.config', ['app.controllers', 'app.services']
       .state('orderDetails',
         url: '/details'
         templateUrl: 'templates/orderDetails.html'
-        controler: 'OrderDetailsCtrl'
+        controller: 'OrderDetailsCtrl'
+      )
+      .state('newOrder',
+        url: '/new'
+        templateUrl: 'templates/newOrder.html'
+        controller: 'NewOrderCtrl'
       )
       $urlRouterProvider.otherwise('/login')
   ])
