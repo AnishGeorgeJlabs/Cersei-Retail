@@ -28,7 +28,7 @@ angular.module 'app.config', ['app.controllers', 'app.services']
         controller: 'AccountCtrl'
       )
       .state('orderDetails',
-        url: '/details'
+        url: '/details/:order_id'
         templateUrl: 'templates/orderDetails.html'
         controller: 'OrderDetailsCtrl'
       )

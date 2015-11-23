@@ -10,7 +10,7 @@ ion-view(title='Orders')
       .card(ng-repeat='order in orders')
         .item.item-divider
           | {{:: order.order_id }}
-          a.badge(ui-sref='orderDetails')
+          a.badge(ui-sref='orderDetails({ order_id: order.order_id })')
             span details &nbsp
             i.icon.ion-arrow-right-b
         .item.item-text-wrap
@@ -18,7 +18,7 @@ ion-view(title='Orders')
           span.royal {{:: order.address }}
           br
           strong amount: &nbsp
-          span {{:: order.price }}
+          span {{:: order.price| currency : "&#8377 " }}
           br
           strong time: &nbsp
           span {{:: order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
