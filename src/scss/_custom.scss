@@ -13,3 +13,12 @@ ion-side-menu ion-content {
 ion-content {
   background: url("../img/scribble_light.png") repeat;
 }
+
+.pull-right {
+  float: right;
+}
+
+.item-divider a.badge {
+  text-decoration: none;
+  right: 16px;
+}

@@ -8,8 +8,12 @@ ion-view(title='Orders')
         br
         | &nbspnothing to show
       .card(ng-repeat='order in orders')
-        .item.item-divider {{:: order.order_id }}
-        .item.item-text-wrap.item-button-right
+        .item.item-divider
+          | {{:: order.order_id }}
+          a.badge(ui-sref='orderDetails')
+            span details &nbsp
+            i.icon.ion-arrow-right-b
+        .item.item-text-wrap
           strong address: &nbsp
           span.royal {{:: order.address }}
           br
@@ -18,7 +22,10 @@ ion-view(title='Orders')
           br
           strong time: &nbsp
           span {{:: order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
-          button.button.button-stable.button-clear.padding-top
-            span details &nbsp
-            i.icon.ion-arrow-right-b
+          br
+          p {{:: order.item_count }} item{{:: order.item_count > 1?"s":"" }} in order
+          //
+            button.button.button-stable.button-clear.padding-top
+              span details &nbsp
+              i.icon.ion-arrow-right-b
 
