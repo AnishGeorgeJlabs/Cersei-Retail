@@ -9,6 +9,23 @@ ion-view(title='Order Details' cache-view='false')
       .item.item-divider
         .pull-right.muted.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm"}}
         span {{:: details.order_id }}
+      .item.item-divider.text-center Customer Information
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-person
+        | {{:: details.name }}
+      .item.item-icon-left
+        a(ng-href='tel:{{::details.phone}}').balanced
+          i.icon.ion-ios-telephone
+          | {{:: details.phone }}
+      .item.item-icon-left(ng-if='details.email')
+        a(ng-href='mailto:{{::details.email}}').positive
+          i.icon.ion-email
+          | {{:: details.email }}
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-ios-home
+        | {{:: details.address }}
+
+
       .item.tabs.tabs-icon-left
         a.tab-item
           i.icon.ion-close
