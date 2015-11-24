@@ -3,8 +3,11 @@ angular.module 'app.controllers'
     '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints',
     ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints) ->
 
+      ###
       if not csUserCreds.isLoggedIn()
         $state.go('login')
+
+      ###
 
       $scope.loading = true
 

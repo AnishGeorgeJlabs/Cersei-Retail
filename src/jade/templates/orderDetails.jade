@@ -6,9 +6,19 @@ ion-view(title='Order Details' cache-view='false')
       span.muted loading the order details, please wait
 
     .list(ng-if='!loading')
+      // ---------------- Actual order ------------------------------------------------------
       .item.item-divider
         .pull-right.muted.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm"}}
         span {{:: details.order_id }}
+
+      .item.order-item.item-icon-right(ng-repeat="item in order")
+        span.qty {{:: item.qty }}
+        span.name {{:: item.name }}
+        span.price {{:: item.price }}
+        a.positive
+          i.icon.ion-qr-scanner
+
+      // ---------------- Customer Information ----------------------------------------------
       .item.item-divider.text-center Customer Information
       .item.item-icon-left.item-text-wrap
         i.icon.ion-person
@@ -26,6 +36,7 @@ ion-view(title='Order Details' cache-view='false')
         | {{:: details.address }}
 
 
+      // ---------------- Actions -----------------------------------------------------------
       .item.tabs.tabs-icon-left
         a.tab-item
           i.icon.ion-close

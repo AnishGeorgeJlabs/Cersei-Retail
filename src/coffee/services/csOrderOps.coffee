@@ -18,9 +18,9 @@ angular.module('app.services')
         )
 
       rep = null
-      # $rootScope.$on("app:login", () ->
-      #   rep = $interval(get_list, 5000)
-      # )
+      $rootScope.$on("app:login", () ->
+        rep = $interval(get_list, 5000)
+      )
 
       cleanup = () ->
         $interval.cancel(rep)

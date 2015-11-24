@@ -39,3 +39,25 @@ ion-content {
 .text-large {
   font-size: 1.5em;
 }
+.order-item {
+  .qty {
+    background-color: lighten($mute, 20%);
+    color: $light;
+    padding: 1px 3px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-right: 0.5em;
+  }
+  .qty:before {
+    content: "\00d7"
+  }
+  .price {
+    position: absolute;
+    right: 64px;
+    color: $mute;
+  }
+  .price:before {
+    content: "\20B9 "
+  }
+}
+
