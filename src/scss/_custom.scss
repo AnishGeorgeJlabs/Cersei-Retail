@@ -59,5 +59,15 @@ ion-content {
   .price:before {
     content: "\20B9 "
   }
+  .points {
+    position: absolute;
+    right: 12px;
+    color: $royal;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+  .points:after{
+    content: "pts"
+  }
 }
 

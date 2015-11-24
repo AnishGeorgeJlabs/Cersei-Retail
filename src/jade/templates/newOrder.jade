@@ -1,3 +1,11 @@
-ion-view(title='New Order')
+ion-view(title='New Order' cache-view='false')
   ion-content(padding='true').has-header
-    h3 New order
+    .list
+      .item.order-item.item-icon-right(ng-repeat="item in current")
+        span.qty {{:: item.qty }}
+        span.name {{:: item.name }}
+        span.price {{:: item.price }}
+        span.points {{:: item.points }}
+      button.button.button-stable.button-block.item
+        i.icon.ion-qr-scanner
+        | &nbsp Scan another item ...
