@@ -24,8 +24,4 @@ ion-view(title='Orders')
           span {{:: order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
           br
           p {{:: order.item_count }} item{{:: order.item_count > 1?"s":"" }} in order
-          //
-            button.button.button-stable.button-clear.padding-top
-              span details &nbsp
-              i.icon.ion-arrow-right-b
 
