@@ -1,3 +1,18 @@
-ion-view(title='Order Details')
-  ion-content(padding='true').has-header
-    h3 Details for the order
+ion-view(title='Order Details' cache-view='false')
+  ion-content(padding='false').has-header
+    div(ng-if='loading').wait-message
+      div.text-center
+        ion-spinner(icon='lines')
+      span.muted loading the order details, please wait
+
+    .list(ng-if='!loading')
+      .item.item-divider
+        .pull-right.muted.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm"}}
+        span {{:: details.order_id }}
+      .item.tabs.tabs-icon-left
+        a.tab-item
+          i.icon.ion-close
+          | Cancel
+        a.tab-item.balanced
+          i.icon.ion-paper-airplane
+          | Deliver
