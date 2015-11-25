@@ -4,7 +4,7 @@ angular.module 'app.config', ['app.controllers', 'app.services']
 
     ($stateProvider, $urlRouterProvider, $ionicConfigProvider, csApiEndpointsProvider) ->
 
-      csApiEndpointsProvider.useLocalHost(false)
+      csApiEndpointsProvider.useLocalHost(true)
 
       $stateProvider
       .state('login',
@@ -26,6 +26,16 @@ angular.module 'app.config', ['app.controllers', 'app.services']
         url: '/account'
         templateUrl: 'templates/account.html'
         controller: 'AccountCtrl'
+      )
+      .state('orderDetails',
+        url: '/details/:order_id'
+        templateUrl: 'templates/orderDetails.html'
+        controller: 'OrderDetailsCtrl'
+      )
+      .state('newOrder',
+        url: '/new'
+        templateUrl: 'templates/newOrder.html'
+        controller: 'NewOrderCtrl'
       )
       $urlRouterProvider.otherwise('/login')
   ])

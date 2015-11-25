@@ -1,0 +1,46 @@
+ion-view(title='Order Details' cache-view='false')
+  ion-content(padding='false').has-header
+    div(ng-if='loading').wait-message
+      div.text-center
+        ion-spinner(icon='lines')
+      span.muted loading the order details, please wait
+
+    .list(ng-if='!loading')
+      // ---------------- Actual order ------------------------------------------------------
+      .item.item-divider
+        .pull-right.muted.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm"}}
+        span {{:: details.order_id }}
+
+      .item.order-item(ng-repeat="item in order")
+        span.qty {{:: item.qty }}
+        span.name {{:: item.name }}
+        span.price {{:: item.price }}
+        button.scan-button
+          span 1/2
+
+      // ---------------- Customer Information ----------------------------------------------
+      .item.item-divider.text-center Customer Information
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-person
+        | {{:: details.name }}
+      .item.item-icon-left
+        a(ng-href='tel:{{::details.phone}}').balanced
+          i.icon.ion-ios-telephone
+          | {{:: details.phone }}
+      .item.item-icon-left(ng-if='details.email')
+        a(ng-href='mailto:{{::details.email}}').positive
+          i.icon.ion-email
+          | {{:: details.email }}
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-ios-home
+        | {{:: details.address }}
+
+
+      // ---------------- Actions -----------------------------------------------------------
+      .item.tabs.tabs-icon-left
+        a.tab-item
+          i.icon.ion-close
+          | Cancel
+        a.tab-item.balanced
+          i.icon.ion-paper-airplane
+          | Deliver

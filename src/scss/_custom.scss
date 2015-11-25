@@ -1,3 +1,5 @@
+$mute: #4a4a4a;
+
 ion-side-menu ion-content {
   background: $dark;
   .list .item {
@@ -13,3 +15,93 @@ ion-side-menu ion-content {
 ion-content {
   background: url("../img/scribble_light.png") repeat;
 }
+
+.pull-right {
+  float: right;
+}
+
+.item-divider a.badge {
+  text-decoration: none;
+  right: 16px;
+}
+
+.muted {
+  color: $mute;
+}
+
+.bg-muted {
+  background-color: $mute;
+}
+
+.text-small {
+  font-size: 0.8em;
+}
+.text-large {
+  font-size: 1.5em;
+}
+.order-item {
+  .qty {
+    background-color: lighten($mute, 20%);
+    color: $light;
+    padding: 1px 3px;
+    border-radius: 3px;
+    @extend .text-small;
+    margin-right: 0.5em;
+  }
+  .qty:before {
+    content: "\00d7"
+  }
+  .price {
+    position: absolute;
+    right: 4.5em;
+    color: $mute;
+  }
+  .price:before {
+    content: "\20B9 "
+  }
+  .points {
+    position: absolute;
+    right: 12px;
+    color: $royal;
+    font-weight: bold;
+    @extend .text-small;
+  }
+  .points:after{
+    content: "pts"
+  }
+  /*
+  button.button {
+    position: absolute;
+    right: 12px;
+    top: 4px;
+    span {
+      color: $balanced;
+      position: absolute;
+      @extend .text-small;
+      left: 1.3em;
+    }
+  }
+  button.button.button-icon:before {
+    font-size: 3em;
+  } */
+  .scan-button {
+    @extend .button;
+    @extend .button-icon;
+    @extend .icon;
+    @extend .ion-qr-scanner;
+    color: $positive;
+    position: absolute;
+    right: 12px;
+    top: 4px;
+    span {
+      color: $balanced;
+      position: absolute;
+      @extend .text-small;
+      left: 1.3em;
+    }
+  }
+  .scan-button:before {
+    font-size: 3em;
+  }
+}
+

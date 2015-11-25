@@ -25,6 +25,8 @@ html(ng-app='app')
         ion-content.has-header
           .list.list-borderless
             #sidebarSpacer.item.spacer
+            .item.item-text-wrap
+              | This app is registered to {{ merchant_name }}, {{ address }}
             .item.item-icon-left(menu-close ng-click='logout()')
               i.icon.ion-log-out
               | Logout
