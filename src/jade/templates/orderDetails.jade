@@ -11,12 +11,12 @@ ion-view(title='Order Details' cache-view='false')
         .pull-right.muted.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm"}}
         span {{:: details.order_id }}
 
-      .item.order-item.item-icon-right(ng-repeat="item in order")
+      .item.order-item(ng-repeat="item in order")
         span.qty {{:: item.qty }}
         span.name {{:: item.name }}
         span.price {{:: item.price }}
-        a.positive
-          i.icon.ion-qr-scanner
+        button.scan-button
+          span 1/2
 
       // ---------------- Customer Information ----------------------------------------------
       .item.item-divider.text-center Customer Information
