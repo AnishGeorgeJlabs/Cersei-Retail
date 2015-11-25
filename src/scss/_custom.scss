@@ -13,7 +13,7 @@ ion-side-menu ion-content {
 }
 
 ion-content {
-  background: url("../img/scribble_light.png") repeat;
+  background: url("../img/tileable_wood_texture.png") repeat;
 }
 
 .pull-right {
@@ -60,8 +60,9 @@ ion-content {
     content: "\20B9 "
   }
   .points {
+    line-height: 22px;
     position: absolute;
-    right: 12px;
+    right: 1.8em;
     color: $royal;
     font-weight: bold;
     @extend .text-small;
@@ -69,21 +70,6 @@ ion-content {
   .points:after{
     content: "pts"
   }
-  /*
-  button.button {
-    position: absolute;
-    right: 12px;
-    top: 4px;
-    span {
-      color: $balanced;
-      position: absolute;
-      @extend .text-small;
-      left: 1.3em;
-    }
-  }
-  button.button.button-icon:before {
-    font-size: 3em;
-  } */
   .scan-button {
     @extend .button;
     @extend .button-icon;
@@ -94,6 +80,7 @@ ion-content {
     right: 12px;
     top: 4px;
     span {
+      vertical-align: baseline;
       color: $balanced;
       position: absolute;
       @extend .text-small;

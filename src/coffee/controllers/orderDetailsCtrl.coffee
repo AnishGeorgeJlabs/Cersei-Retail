@@ -15,6 +15,11 @@ angular.module 'app.controllers'
       .then(
         (data) ->
           $scope.order = data.order
+
+          # todo, add local storage options so that this can be saved and order completed in parts
+          for item in $scope.order
+            item.scanned = []
+
           delete data.order
           $scope.details = data
           console.log "Got order: #{JSON.stringify($scope.order)}"
@@ -23,4 +28,9 @@ angular.module 'app.controllers'
         , (failure) ->
           console.log "Failed to fetch details"
       )
+
+      $scope.scan = (index) ->
+        $scope.order[index].scanned.push(10)
+      $scope.total_points = (index) ->
+        $scope.order[index].scanned.reduce (t,s) -> t + s
 ])
