@@ -10,7 +10,7 @@ angular.module 'app.controllers'
           points: 30
         },
         {
-          name: "Kissan Tomato Ketchup"
+          name: "Kissan Tomato Ketchup with a lot of additional text just for testing purposes as some of the stuff is long"
           price: 100
           qty: 1
           points: 10

@@ -40,6 +40,14 @@ ion-content {
   font-size: 1.5em;
 }
 .order-item {
+  .name {
+    display: inline-block;
+    width: 100%;
+    word-wrap: break-word;
+    overflow: visible;
+    white-space: normal;
+    padding-right: 6em;
+  }
   .qty {
     background-color: lighten($mute, 20%);
     color: $light;
@@ -47,9 +55,11 @@ ion-content {
     border-radius: 3px;
     @extend .text-small;
     margin-right: 0.5em;
+    vertical-align: top;
   }
   .qty:before {
-    content: "\00d7"
+    content: "\00d7";
+    vertical-align: top;
   }
   .price {
     position: absolute;
@@ -91,4 +101,3 @@ ion-content {
     font-size: 3em;
   }
 }
-
