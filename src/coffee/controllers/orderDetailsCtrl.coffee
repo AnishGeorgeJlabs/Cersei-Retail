@@ -1,7 +1,7 @@
 angular.module 'app.controllers'
 .controller('OrderDetailsCtrl', [
-    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints',
-    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints) ->
+    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', '$cordovaBarcodeScanner',
+    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, $cordovaBarcodeScanner) ->
 
       ###
       if not csUserCreds.isLoggedIn()
@@ -31,6 +31,22 @@ angular.module 'app.controllers'
 
       $scope.scan = (index) ->
         $scope.order[index].scanned.push(10)
+
       $scope.total_points = (index) ->
         $scope.order[index].scanned.reduce (t,s) -> t + s
+
+      $scope.coScan = () ->
+        $cordovaBarcodeScanner
+        .scan()
+        .then(
+          (data) ->
+            console.log "Success:: #{JSON.stringify(data)}"
+            if not data.cancelled
+              console.log "Going at it again"
+              $scope.coScan()
+            else
+              console.log "Not going at it again"
+          , (error) ->
+            console.log "Failure:: #{JSON.stringify(error)}"
+        )
 ])
