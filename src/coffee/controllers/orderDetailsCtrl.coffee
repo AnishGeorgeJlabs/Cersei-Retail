@@ -1,13 +1,7 @@
 angular.module 'app.controllers'
 .controller('OrderDetailsCtrl', [
-    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', '$cordovaBarcodeScanner',
-    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, $cordovaBarcodeScanner) ->
-
-      ###
-      if not csUserCreds.isLoggedIn()
-        $state.go('login')
-
-      ###
+    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', 'csScanner', '$cordovaToast'
+    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, csScanner, $cordovaToast) ->
 
       $scope.loading = true
 
@@ -19,6 +13,7 @@ angular.module 'app.controllers'
           # todo, add local storage options so that this can be saved and order completed in parts
           for item in $scope.order
             item.scanned = []
+            item.pts = 0
 
           delete data.order
           $scope.details = data
@@ -32,21 +27,28 @@ angular.module 'app.controllers'
       $scope.scan = (index) ->
         $scope.order[index].scanned.push(10)
 
-      $scope.total_points = (index) ->
-        $scope.order[index].scanned.reduce (t,s) -> t + s
-
       $scope.coScan = () ->
-        $cordovaBarcodeScanner
-        .scan()
-        .then(
-          (data) ->
-            console.log "Success:: #{JSON.stringify(data)}"
-            if not data.cancelled
-              console.log "Going at it again"
-              $scope.coScan()
-            else
-              console.log "Not going at it again"
+        csScanner((text) ->
+          agHttp.get(csApiEndpoints.scan, {
+            code: text
+          }).then(
+            (data) ->
+              # first match the correct barcode
+              f = false
+              for item in $scope.order when item.barcode == data.barcode
+                f = true
+                if item.scanned.length < item.qty
+                  item.scanned.push(text)
+                  item.pts += data.pts
+                $cordovaToast.showShortBottom("#{item.name} scanned")
+                console.log "#{item.name} scanned"
+                break
+              if not f
+                $cordovaToast.showShortBottom("Item not found in order")
+                console.log "Item not found"
           , (error) ->
-            console.log "Failure:: #{JSON.stringify(error)}"
+              console.log "#{JSON.stringify(error)}"
+          )
+          true
         )
 ])

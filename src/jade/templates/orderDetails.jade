@@ -16,9 +16,9 @@ ion-view(title='Order Details' cache-view='false')
         span.name {{:: item.name }}
         span.price {{:: item.price }}
         span.scanned(ng-if='item.qty != item.scanned.length') {{item.scanned.length}}/{{::item.qty}}
-        span.points(ng-if='item.qty == item.scanned.length') {{:: total_points($index) }}
+        span.points(ng-if='item.qty == item.scanned.length') {{item.pts}}
       .item
-        button.button.button-positive.button-block(ng-click='scan(0)')
+        button.button.button-positive.button-block(ng-click='coScan(0)')
           | Scan codes...&nbsp
           i.icon.ion-qr-scanner
 
