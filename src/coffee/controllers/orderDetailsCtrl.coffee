@@ -24,6 +24,11 @@ angular.module 'app.controllers'
           console.log "Failed to fetch details"
       )
 
+      $scope.total = () ->
+        sum = 0
+        sum += item.pts for item in $scope.order
+        sum
+
       $scope.scan = (index) ->
         $scope.order[index].scanned.push(10)
 
@@ -37,7 +42,7 @@ angular.module 'app.controllers'
               f = false
               for item in $scope.order when item.barcode == data.barcode
                 f = true
-                if item.scanned.length < item.qty
+                if item.scanned.length < item.qty and text not in item.scanned
                   item.scanned.push(text)
                   item.pts += data.pts
                 $cordovaToast.showShortBottom("#{item.name} scanned")
