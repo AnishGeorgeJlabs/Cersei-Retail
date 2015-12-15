@@ -22,6 +22,7 @@ angular.module 'app.services'
     change_pass: host + "auth/change_pass"
     orders: host + "orders"
     order_details: host + "orders/details"
+    order_update: host + "orders/update"
     scan: host + "scan"
     }
 )
