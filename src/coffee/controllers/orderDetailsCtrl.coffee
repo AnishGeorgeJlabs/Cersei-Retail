@@ -1,7 +1,7 @@
 angular.module 'app.controllers'
 .controller('OrderDetailsCtrl', [
-    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', 'csScanner', '$cordovaToast'
-    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, csScanner, $cordovaToast) ->
+    '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', 'csScanner', '$cordovaToast', '$ionicPopup',
+    ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, csScanner, $cordovaToast, $ionicPopup) ->
 
       $scope.loading = true
 
@@ -29,8 +29,30 @@ angular.module 'app.controllers'
         sum += item.pts for item in $scope.order
         sum
 
+      $scope.cancel = () ->
+        $ionicPopup.confirm(
+          title: "Cancel the order?"
+          content: "Are you sure you want to cancel the order?"
+          okType: 'button-clear button-small button-assertive'
+          okText: 'Yes'
+          cancelType: 'button-clear button-small'
+          cancelText: 'No'
+        ).then(
+          (res) ->
+            if res
+              # todo, add the logic here
+              agHttp.post(csApiEndpoints.order_update,
+                order_id: $scope.details.order_id
+                status: "cancelled"
+              )
+              $state.go "orders"
+        )
+
+      ### For testing only
       $scope.scan = (index) ->
         $scope.order[index].scanned.push(10)
+
+      ###
 
       $scope.coScan = () ->
         csScanner((text) ->

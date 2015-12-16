@@ -45,7 +45,7 @@ ion-view(title='Order Details' cache-view='false')
 
       // ---------------- Actions -----------------------------------------------------------
       .item.tabs.tabs-icon-left
-        a.tab-item
+        a.tab-item(ng-click='cancel()')
           i.icon.ion-close
           | Cancel
         a.tab-item.balanced
