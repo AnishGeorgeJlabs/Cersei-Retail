@@ -29,6 +29,34 @@ angular.module 'app.controllers'
         sum += item.pts for item in $scope.order
         sum
 
+      $scope.accept = () ->
+        $ionicPopup.confirm(
+          title: "Confirm send"
+          content: "Confirm the order? You cannot make any further changes"
+          okType: 'button-clear button-small button-balanced'
+          okText: 'Yes'
+          cancelType: 'button-clear button-small'
+          cancelText: 'No'
+        ).then(
+          (res) ->
+            if res
+              all_codes = []
+              for item in $scope.order
+                all_codes = all_codes.concat(item.scanned)
+              agHttp.post(csApiEndpoints.order_update,
+                order_id: $scope.details.order_id
+                status: "accepted"
+                order_codes: all_codes
+              ).then(
+                (pts) ->
+                  console.log "You gained #{pts} points"
+                  $cordovaToast.showShortBottom("You gained #{pts} points")
+                , (error) ->
+                  console.log "Got an error: " + error
+              )
+              $state.go "orders"
+        )
+
       $scope.cancel = () ->
         $ionicPopup.confirm(
           title: "Cancel the order?"
@@ -40,7 +68,6 @@ angular.module 'app.controllers'
         ).then(
           (res) ->
             if res
-              # todo, add the logic here
               agHttp.post(csApiEndpoints.order_update,
                 order_id: $scope.details.order_id
                 status: "cancelled"
