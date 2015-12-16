@@ -7,10 +7,15 @@ angular.module('app.services')
 
 
       get_list = () ->
+        console.log "Get list called"
         agHttp.get(csApiEndpoints.orders)
         .then(
           (data) ->
             order_list = data
+            if data.length > 0
+              csAudioAlert.play()
+            else
+              csAudioAlert.stop()
             if callback != null
               callback(order_list)
         , (reason) ->
@@ -18,12 +23,17 @@ angular.module('app.services')
         )
 
       rep = null
+      rep = $interval(get_list, 5000)
       $rootScope.$on("app:login", () ->
+        if rep != null
+          $interval.cancel(rep)
         rep = $interval(get_list, 5000)
       )
 
       cleanup = () ->
-        $interval.cancel(rep)
+        console.log "Cleanup called"
+        if rep != null
+          $interval.cancel(rep)
         order_list = []
 
       $rootScope.$on("app:logout", cleanup)
@@ -33,6 +43,7 @@ angular.module('app.services')
 
         register_callback: (fn) ->
           callback = fn
+          console.log "Registered function"
           if order_list.length == 0
             get_list()
           else

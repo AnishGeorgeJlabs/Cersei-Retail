@@ -25,6 +25,7 @@ angular.module 'app.services'
           broad = {name: data.name, address: data.address}
           $rootScope.$emit("app:login", broad)
           username
+          console.log "Emitted the login"
         )
       change_pass: (user, old_pass, new_pass) ->
         real_old_pass = agEncPass(old_pass)
