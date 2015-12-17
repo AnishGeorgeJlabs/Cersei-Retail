@@ -1,6 +1,10 @@
 ion-view(title='Account' cache-view="false")
   ion-content(padding='true').has-header
-    .list
+    div(ng-if='loading').wait-message
+      div.text-center
+        ion-spinner(icon='lines')
+      span.muted loading the account stats, please wait
+    .list(ng-if='!loading')
       .item.item-divider Retailer info
       .item.item-icon-left
         i.icon.ion-person
