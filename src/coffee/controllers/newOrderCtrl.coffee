@@ -1,7 +1,9 @@
 angular.module 'app.controllers'
 .controller("NewOrderCtrl", [
-    '$scope',
-    ($scope) ->
+    '$scope', 'csUserCreds', '$state',
+    ($scope, csUserCreds, $state) ->
+      if not csUserCreds.isLoggedIn()
+        $state.go('login')
       $scope.current = [
         {
           name: "Act II Popcorn"

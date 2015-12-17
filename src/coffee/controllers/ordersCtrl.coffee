@@ -8,8 +8,6 @@ angular.module('app.controllers')
 
       $scope.orders = []
       csOrderOps.register_callback((data) ->
-        console.log "Callback called with data"
         $scope.orders = data
       )
-      console.log "orderCtrl finished loading"
 ])

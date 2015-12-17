@@ -4,7 +4,7 @@ angular.module 'app.config', ['app.controllers', 'app.services']
 
     ($stateProvider, $urlRouterProvider, $ionicConfigProvider, csApiEndpointsProvider) ->
 
-      csApiEndpointsProvider.useLocalHost(false)
+      csApiEndpointsProvider.useLocalHost(true)
 
       $stateProvider
       .state('login',

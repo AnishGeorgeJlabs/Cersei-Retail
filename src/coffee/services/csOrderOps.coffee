@@ -7,7 +7,6 @@ angular.module('app.services')
 
 
       get_list = () ->
-        console.log "Get list called"
         agHttp.get(csApiEndpoints.orders)
         .then(
           (data) ->
@@ -31,7 +30,6 @@ angular.module('app.services')
       )
 
       cleanup = () ->
-        console.log "Cleanup called"
         if rep != null
           $interval.cancel(rep)
         order_list = []
@@ -43,7 +41,6 @@ angular.module('app.services')
 
         register_callback: (fn) ->
           callback = fn
-          console.log "Registered function"
           if order_list.length == 0
             get_list()
           else

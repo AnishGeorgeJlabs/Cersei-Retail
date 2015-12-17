@@ -1,3 +1,31 @@
-ion-view(title='Account')
+ion-view(title='Account' cache-view="false")
   ion-content(padding='true').has-header
-    h3 blah account
+    .list
+      .item.item-divider Retailer info
+      .item.item-icon-left
+        i.icon.ion-person
+        | {{:: data.name }}
+      .item.item-icon-left
+        i.icon.ion-location
+        | {{:: data.address }}
+
+      .item.item-divider Stats
+      .item.item-icon-left
+        i.icon.ion-ios-stopwatch-outline
+        | Pending orders
+        span.badge.badge-assertive {{:: data.pending }}
+
+      .item.item-icon-left
+        i.icon.ion-ios-checkmark-outline
+        | Complete orders
+        span.badge {{:: data.complete }}
+
+      .item.item-icon-left
+        i.icon.ion-ios-close-outline
+        | Cancelled orders
+        span.badge {{:: data.cancelled }}
+
+      .item.order-item
+        | Total points gained
+        span.badge.badge-balanced {{:: data.total_points }}pts
+

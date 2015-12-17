@@ -2,6 +2,8 @@ angular.module 'app.controllers'
 .controller('OrderDetailsCtrl', [
     '$scope', '$state', '$stateParams', 'csUserCreds', 'agHttp', 'csApiEndpoints', 'csScanner', '$cordovaToast', '$ionicPopup',
     ($scope, $state, $stateParams, csUserCreds, agHttp, csApiEndpoints, csScanner, $cordovaToast, $ionicPopup) ->
+      if not csUserCreds.isLoggedIn()
+        $state.go('login')
 
       $scope.loading = true
 
