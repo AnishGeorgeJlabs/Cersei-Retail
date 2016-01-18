@@ -20,10 +20,11 @@ angular.module 'app.services'
     echo: host
     login: host + "auth/login"
     change_pass: host + "auth/change_pass"
-    orders: host + "order/list"
-    order_details: host + "order/details"
-    order_update: host + "order/update"
-    scan: host + "order/scan"
-    account: host + "retailer/account"
+    orders: host + "vendor/order/list"
+    order_details: host + "vendor/order/details"
+    order_update: host + "vendor/order/update"
+    scan: host + "vendor/order/scan"
+    new_scan: host + "vendor/order/scan/new"
+    account: host + "vendor/account"
     }
 )

@@ -30,10 +30,12 @@ angular.module 'app.services'
             params = {}
           params.api_key = apiCreds.api_key
           params.vendor_id = apiCreds.vendor_id
+          params.user_type = "vendor"
 
         return deferPromise($http.get(url, {params: params}))
 
       post: (url, data) ->
+        data.user_type = "vendor"
         if apiCreds.api_key
           data.api_key = apiCreds.api_key
           data.vendor_id = apiCreds.vendor_id
